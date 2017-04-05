@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.3
+-- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 19, 2016 at 12:10 AM
--- Server version: 5.7.13
--- PHP Version: 7.0.8
+-- Generation Time: Apr 05, 2017 at 07:15 AM
+-- Server version: 5.7.15
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,52 +17,15 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `jimsjoint`
+-- Database: `restaurant`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Table structure for table `Menu`
 --
 
-DROP TABLE IF EXISTS `Categories`;
-CREATE TABLE `Categories` (
-  `id` varchar(1) NOT NULL,
-  `name` varchar(64) NOT NULL,
-  `description` text NOT NULL,
-  `image` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `categories`
---
-
-INSERT INTO `Categories` (`id`, `name`, `description`, `image`) VALUES
-('d', 'Drinks', 'Purees made from the finest of Venusian insects, government-inspected.', 'catd.png'),
-('m', 'Mains', 'Made from only the finest ingredients found deep in the Martian jungle, and harvested or slaughtered by academy-trained druids, we bring you 45 day aged premium "meat".', 'catm.png'),
-('s', 'Sides', 'Perfect accompaniments to our mains, these side dish pairings have been exclsisvely formulated by Ben & Jerry.', 'cats.png');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ci_sessions`
---
-
-CREATE TABLE `ci_sessions` (
-  `id` varchar(128) NOT NULL,
-  `ip_address` varchar(45) NOT NULL,
-  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `data` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `menu`
---
-
-DROP TABLE IF EXISTS `Menu`;
 CREATE TABLE `Menu` (
   `id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
@@ -73,7 +36,7 @@ CREATE TABLE `Menu` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `menu`
+-- Dumping data for table `Menu`
 --
 
 INSERT INTO `Menu` (`id`, `name`, `description`, `price`, `picture`, `category`) VALUES
@@ -86,68 +49,15 @@ INSERT INTO `Menu` (`id`, `name`, `description`, `price`, `picture`, `category`)
 (25, 'Burger', 'Half-pound of beef, topped with bacon and served with your choice of a slice of American cheese, red onion, sliced tomato, and Heart Attack Grill\'s own unique special sauce.', '9.99', 'burger.png', 'm'),
 (21, 'Coffee', 'A delicious cup of the nectar of life, saviour of students, morning kick-starter; made with freshly grounds that you don\'t want to know where they came from!', '2.95', 'coffee.png', 'd');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `orderitems`
---
-
-DROP TABLE IF EXISTS `Orderitems`;
-CREATE TABLE `Orderitems` (
-  `order` int(11) NOT NULL,
-  `item` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `special` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `orders`
---
-
-DROP TABLE IF EXISTS `Orders`;
-CREATE TABLE `Orders` (
-  `num` int(11) NOT NULL,
-  `date` datetime NOT NULL,
-  `status` varchar(1) NOT NULL,
-  `total` decimal(10,2) NOT NULL,
-  `customer` varchar(64) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `categories`
---
-ALTER TABLE `Categories`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ci_sessions`
---
-ALTER TABLE `ci_sessions`
-  ADD KEY `ci_sessions_timestamp` (`timestamp`);
-
---
--- Indexes for table `menu`
+-- Indexes for table `Menu`
 --
 ALTER TABLE `Menu`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `orderitems`
---
-ALTER TABLE `Orderitems`
-  ADD PRIMARY KEY (`order`,`item`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `Orders`
-  ADD PRIMARY KEY (`num`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
